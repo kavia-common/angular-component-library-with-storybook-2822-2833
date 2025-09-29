@@ -1,3 +1,87 @@
-<div class="container">
-  <h1>{{ title }}</h1>
+<div class="ocn-shell">
+  <!-- Sidebar -->
+  <aside class="ocn-shell__sidebar">
+    <div style="display:flex; align-items:center; gap:.5rem; margin-bottom:.75rem;">
+      <div style="width:10px; height:10px; border-radius:999px; background:var(--ocn-primary)"></div>
+      <strong>Ocean Professional</strong>
+    </div>
+    <nav class="ocn-nav">
+      <div class="ocn-nav__section">Components</div>
+      <a class="ocn-nav__link ocn-nav__link--active" href="#">Button</a>
+      <a class="ocn-nav__link" href="#">Card</a>
+      <a class="ocn-nav__link" href="#">Input</a>
+      <a class="ocn-nav__link" href="#">Badge</a>
+    </nav>
+  </aside>
+
+  <!-- Topbar -->
+  <header class="ocn-shell__topbar">
+    <h1 style="font-size:1rem; font-weight:700; color:var(--ocn-text)">{{ title }}</h1>
+    <span class="ocn-badge">Angular 19 + Storybook</span>
+  </header>
+
+  <!-- Preview -->
+  <main class="ocn-shell__preview">
+    <div style="display:grid; gap: 1rem;">
+      <ocn-card [title]="cardTitle" [subtitle]="cardSubtitle">
+        <div style="display:flex; gap:.5rem; flex-wrap: wrap; align-items: center;">
+          <ocn-badge>Default</ocn-badge>
+          <ocn-badge color="secondary">Secondary</ocn-badge>
+          <ocn-badge color="error">Error</ocn-badge>
+          <ocn-badge color="neutral">Neutral</ocn-badge>
+        </div>
+
+        <div style="height: .75rem;"></div>
+
+        <div style="display:flex; gap:.5rem; align-items: center; flex-wrap:wrap;">
+          <ocn-button [variant]="btnVariant" [size]="btnSize" [loading]="btnLoading" (pressed)="simulateAsync()">
+            Primary Action
+          </ocn-button>
+          <ocn-button variant="secondary" size="md">Secondary</ocn-button>
+          <ocn-button variant="ghost" size="md">Ghost</ocn-button>
+        </div>
+
+        <div style="height: .75rem;"></div>
+
+        <ocn-input label="Sample input" [(value)]="inputValue" placeholder="Type here..."></ocn-input>
+        <div style="font-size:.85rem; color:rgba(17,24,39,0.65);">Value: {{ inputValue }}</div>
+
+        <div card-footer style="display:flex; justify-content:flex-end; gap:.5rem;">
+          <ocn-button variant="ghost" size="sm">Cancel</ocn-button>
+          <ocn-button variant="primary" size="sm">Save</ocn-button>
+        </div>
+      </ocn-card>
+    </div>
+  </main>
+
+  <!-- Controls -->
+  <aside class="ocn-shell__controls">
+    <h2 style="font-size:.95rem; font-weight:700; margin-bottom:.5rem;">Controls</h2>
+    <div class="ocn-card" style="padding: .75rem; display:grid; gap:.75rem;">
+      <div>
+        <div style="font-size:.85rem; font-weight:600; margin-bottom:.25rem;">Variant</div>
+        <div style="display:flex; gap:.5rem; flex-wrap:wrap;">
+          <ocn-button variant="secondary" size="sm" (pressed)="setVariant('primary')">primary</ocn-button>
+          <ocn-button variant="secondary" size="sm" (pressed)="setVariant('secondary')">secondary</ocn-button>
+          <ocn-button variant="secondary" size="sm" (pressed)="setVariant('ghost')">ghost</ocn-button>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:.85rem; font-weight:600; margin-bottom:.25rem;">Size</div>
+        <div style="display:flex; gap:.5rem; flex-wrap:wrap;">
+          <ocn-button variant="secondary" size="sm" (pressed)="setSize('sm')">sm</ocn-button>
+          <ocn-button variant="secondary" size="sm" (pressed)="setSize('md')">md</ocn-button>
+          <ocn-button variant="secondary" size="sm" (pressed)="setSize('lg')">lg</ocn-button>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:.85rem; font-weight:600; margin-bottom:.25rem;">Loading</div>
+        <div style="display:flex; gap:.5rem; flex-wrap:wrap;">
+          <ocn-button variant="secondary" size="sm" (pressed)="btnLoading = !btnLoading">{{ btnLoading ? 'Disable' : 'Enable' }}</ocn-button>
+        </div>
+      </div>
+    </div>
+  </aside>
 </div>
